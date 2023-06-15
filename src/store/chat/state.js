@@ -3,5 +3,5 @@ export const state = {
   myMessages: [],
   offset: 0,
   isMessagesLoading: true,
-  isError: true,
+  isError: false,
 }

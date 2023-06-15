@@ -14,7 +14,7 @@ const fetchMessages = async ({ state, commit }) => {
       throw new Error(response.data)
     }
   } catch (error) {
-    commit('setError', false)
+    commit('setError', true)
   } finally {
     commit('setLoading', true);
   }
@@ -34,7 +34,7 @@ const loadMoreMessages = async ({ state, commit }) => {
       throw new Error(response.data)
     }
   } catch (error) {
-    commit('setError', false)
+    commit('setError', true)
   }
 }
 

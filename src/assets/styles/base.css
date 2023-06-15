@@ -44,13 +44,6 @@ header {
   height: 5px;
 }
 
-.content__error {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100vh - 250px);
-}
-
 .preloader {
   display: flex;
   align-items: center;
@@ -73,6 +66,10 @@ header {
 .btn:hover:not(:disabled) {
   background-color: var(--white-bg);
   color: var(--blue-txt);
+}
+.btn:disabled {
+  opacity: .7;
+  cursor: not-allowed;
 }
 
 .input {
