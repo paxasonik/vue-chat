@@ -24,15 +24,17 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div class="container content__chat chat" v-if="isError">
+  <div class="container content__chat chat">
+    <transition name="error">
+      <div class="chat__error" v-if="isError">
+        Извините, возникла ошибка. Перезагрузите пожалуйста страницу.
+      </div>
+    </transition>
     <div class="chat__wrap">
       <message-list v-if="isMessagesLoading"/>
       <preloader v-else/>
-      <div v-intersection="loadMoreMessages" class="observer" v-show="isMessagesLoading"/>
+      <div v-intersection="loadMoreMessages" class="observer" v-show="isMessagesLoading && !isError"/>
     </div>
     <message-add/>
-  </div>
-  <div class="container content__error" v-else>
-    Извините, возникла ошибка. Перезагрузите пожалуйста страницу.
   </div>
 </template>

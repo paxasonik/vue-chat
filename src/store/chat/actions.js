@@ -5,7 +5,7 @@ const fetchMessages = async ({ state, commit }) => {
     commit('setLoading', false);
     const response = await axios.get('https://numia.ru/api/getMessages', {
       params: {
-        offset: state.page,
+        offset: state.offset,
       }
     });
     if(response.data?.result.length) {
@@ -14,7 +14,7 @@ const fetchMessages = async ({ state, commit }) => {
       throw new Error(response.data)
     }
   } catch (error) {
-    commit('setError', false)
+    commit('setError', true)
   } finally {
     commit('setLoading', true);
   }
@@ -22,19 +22,19 @@ const fetchMessages = async ({ state, commit }) => {
 
 const loadMoreMessages = async ({ state, commit }) => {
   try {
-    commit('setPage', state.page + 1)
+    commit('setOffset', state.offset + 20)
     const response = await axios.get('https://numia.ru/api/getMessages', {
       params: {
-        offset: state.page,
+        offset: state.offset
       }
     });
     if(response.data?.result.length) {
-      commit('setMessages', [ ...state.messages , ...[response.data.result.at(-1)]])
+      commit('setMessages', [ ...state.messages , ...response.data.result ])
     } else {
       throw new Error(response.data)
     }
   } catch (error) {
-    commit('setError', false)
+    commit('setError', true)
   }
 }
 

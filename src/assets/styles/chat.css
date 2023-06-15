@@ -21,6 +21,11 @@
   height: calc(100vh - 250px);
 }
 
+.chat__error {
+  text-align: center;
+  padding: 20px 0;
+}
+
 .message__item {
   position: relative;
   margin-bottom: 10px;
@@ -79,4 +84,14 @@
 .messages-leave-to {
   opacity: 0;
   transform: translateY(30px);
+}
+
+.error-enter-active,
+.error-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.error-enter-from,
+.error-leave-to {
+  opacity: 0;
 }
