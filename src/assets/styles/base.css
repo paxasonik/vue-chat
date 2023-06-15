@@ -16,6 +16,14 @@ body {
   color: var(--white-txt);
 }
 
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--sky-blue-bg);
+  border-radius: 20px;
+}
+
 header {
   padding: 20px 0;
 }
@@ -30,6 +38,27 @@ header {
   .container {
     max-width: 1630px;
   }
+}
+
+.observer {
+  height: 5px;
+}
+
+.content__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 250px);
+}
+
+.preloader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.preloader img {
+  width: 50px;
 }
 
 .btn {
@@ -58,12 +87,4 @@ header {
 
 .input::placeholder {
   color: var(--sky-blue-txt);
-}
-
-body::-webkit-scrollbar {
-  width: 12px;
-}
-body::-webkit-scrollbar-thumb {
-  background-color: var(--sky-blue-bg);
-  border-radius: 20px;
 }
