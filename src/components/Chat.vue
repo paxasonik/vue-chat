@@ -3,6 +3,7 @@ import { computed, onBeforeMount } from "vue";
 import { useStore } from "vuex"
 import MessageList from "@/components/MessageList.vue";
 import Preloader from "@/components/UI/Preloader.vue";
+import MessageAdd from "@/components/MessageAdd.vue";
 
 const store = useStore();
 
@@ -29,12 +30,7 @@ onBeforeMount(() => {
       <preloader v-else/>
       <div v-intersection="loadMoreMessages" class="observer" v-show="isMessagesLoading"/>
     </div>
-    <div class="chat__add-massage">
-      <input class="input" type="text" placeholder="Введите сообщение">
-      <button class="btn">
-        Отправить
-      </button>
-    </div>
+    <message-add/>
   </div>
   <div class="container content__error" v-else>
     Извините, возникла ошибка. Перезагрузите пожалуйста страницу.

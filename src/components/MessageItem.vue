@@ -1,17 +1,25 @@
 <script setup>
+import { computed } from "vue";
+
 const props = defineProps({
-  message: {
-    type: String,
+  item: {
+    type: Object,
     default() {
-      return ''
+      return {
+        message: '',
+        isMyMessage: false,
+      }
     }
   },
 });
 
+const classMessages = computed(() => {
+  return props.item.isMyMessage ? 'my' : 'user'
+});
 </script>
 
 <template>
-  <li class="message__item user">
-    {{ props.message }}
+  <li class="message__item" :class="[classMessages]">
+    {{ props.item.message }}
   </li>
 </template>
