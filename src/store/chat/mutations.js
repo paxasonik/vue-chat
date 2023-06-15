@@ -1,6 +1,9 @@
 const setMessages = (state, messages) => {
   state.messages = messages;
 };
+const addMessages = (state, messages) => {
+  state.messages.unshift(messages);
+};
 const setPage = (state, page) => {
   state.page = page
 };
@@ -13,6 +16,7 @@ const setError = (state, bool) => {
 
 export default {
   setMessages,
+  addMessages,
   setPage,
   setLoading,
   setError,
