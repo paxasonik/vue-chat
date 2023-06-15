@@ -13,9 +13,9 @@ const messages = computed(() => {
 <template>
   <transition-group tag="ul" name="messages" class="chat__messages message" v-if="messages.length">
     <message-item
-        v-for="message in messages"
-        :key="message"
-        :message="message"
+        v-for="item in messages"
+        :key="item.message"
+        :item="item"
     />
   </transition-group>
   <div class="chat__empty" v-else>

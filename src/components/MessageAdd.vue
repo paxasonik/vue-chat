@@ -3,12 +3,11 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 import FormInput from "@/components/UI/FormInput.vue";
 
-
 const store = useStore();
 const message = ref('')
 
 const addMassage = () => {
-  store.commit('message/addMessages', message.value);
+  store.commit('message/setMyMessages', { message: message.value, isMyMessage: true });
   message.value = '';
 }
 </script>

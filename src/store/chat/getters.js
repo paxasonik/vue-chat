@@ -1,5 +1,11 @@
 const messages = state => {
-  return [...state.messages].reverse()
+  if (state.messages.length) {
+    const messages = state.messages.map((item) => {
+      return { message: item, isMyMessage: false }
+    })
+    return [...state.myMessages, ...messages].reverse()
+  }
+  return [...state.myMessages, ...state.messages].reverse()
 };
 const page = state => state.page;
 const isMessagesLoading = state => state.isMessagesLoading;
