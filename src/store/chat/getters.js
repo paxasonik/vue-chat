@@ -7,13 +7,13 @@ const messages = state => {
   }
   return [...state.myMessages, ...state.messages].reverse()
 };
-const page = state => state.page;
+const offset = state => state.offset;
 const isMessagesLoading = state => state.isMessagesLoading;
 const isError = state => state.isError;
 
 export default {
   messages,
-  page,
+  offset,
   isMessagesLoading,
   isError,
 }
