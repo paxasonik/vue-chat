@@ -1,6 +1,16 @@
-import './assets/main.css'
+import './assets/styles/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
+import store from '@/store'
 
-createApp(App).mount('#app')
+import directives from '@/directives';
+
+const app = createApp(App)
+
+directives.forEach(directive => {
+  app.directive(directive.name, directive)
+})
+
+app.use(store)
+app.mount('#app')
