@@ -13,6 +13,9 @@ const isMessagesLoading = computed(() => {
 const isError = computed(() => {
   return store.getters['message/isError']
 });
+const isMessages = computed(() => {
+  return store.getters['message/isMessages']
+});
 
 const loadMoreMessages = () => {
   store.dispatch('message/loadMoreMessages')
@@ -25,15 +28,20 @@ onBeforeMount(() => {
 
 <template>
   <div class="container content__chat chat">
-    <transition name="error">
-      <div class="chat__error" v-if="isError">
-        Извините, возникла ошибка. Перезагрузите пожалуйста страницу.
-      </div>
-    </transition>
     <div class="chat__wrap">
       <message-list v-if="isMessagesLoading"/>
       <preloader v-else/>
-      <div v-intersection="loadMoreMessages" class="observer" v-show="isMessagesLoading && !isError"/>
+      <div v-intersection="loadMoreMessages" class="observer" v-show="isMessagesLoading && isMessages"/>
+      <transition name="error">
+        <div class="chat__error" v-if="!isMessages">
+          Больше нет сообщений
+        </div>
+      </transition>
+      <transition name="error">
+        <div class="chat__error" v-if="!isError">
+          Извините, возникла ошибка. Попробуйте ещё раз.
+        </div>
+      </transition>
     </div>
     <message-add/>
   </div>
