@@ -3,17 +3,19 @@ const messages = state => {
     const messages = state.messages.map((item) => {
       return { message: item, isMyMessage: false }
     })
-    return [...state.myMessages, ...messages].reverse()
+    return [...messages.reverse(), ...state.myMessages]
   }
-  return [...state.myMessages, ...state.messages].reverse()
+  return [...state.messages.reverse(), ...state.myMessages]
 };
 const offset = state => state.offset;
+const isMessages = state => state.isMessages;
 const isMessagesLoading = state => state.isMessagesLoading;
 const isError = state => state.isError;
 
 export default {
   messages,
   offset,
+  isMessages,
   isMessagesLoading,
   isError,
 }

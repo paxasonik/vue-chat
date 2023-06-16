@@ -13,6 +13,9 @@ const setLoading = (state, bool) => {
 const setError = (state, bool) => {
   state.isError = bool
 };
+const setIsMessages = (state, bool) => {
+  state.isMessages = bool
+};
 
 export default {
   setMessages,
@@ -20,4 +23,5 @@ export default {
   setOffset,
   setLoading,
   setError,
+  setIsMessages,
 }
